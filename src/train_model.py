@@ -23,7 +23,10 @@ from sklearn.model_selection import StratifiedKFold, cross_validate, train_test_
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-from src.ml_utils import add_engineered_features, build_binary_target, load_dataset
+try:
+    from src.ml_utils import add_engineered_features, build_binary_target, load_dataset
+except ModuleNotFoundError:
+    from ml_utils import add_engineered_features, build_binary_target, load_dataset
 
 
 @dataclass
