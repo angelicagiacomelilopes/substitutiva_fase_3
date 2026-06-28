@@ -7,7 +7,10 @@ import joblib
 import pandas as pd
 import streamlit as st
 
-from src.ml_utils import add_engineered_features
+try:
+    from src.ml_utils import add_engineered_features
+except ModuleNotFoundError:
+    from ml_utils import add_engineered_features
 
 # Configurações iniciais da página
 st.set_page_config(page_title="Previsão de Evasão", layout="wide")
