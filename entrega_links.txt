@@ -1,0 +1,4 @@
+LINK_REPOSITORIO_GITHUB: https://github.com/angelicagiacomelilopes/substitutiva_fase_3
+LINK_STREAMLIT_DEPLOY: https://substitutivafase3-angelica-giacomeli.streamlit.app/
+LINK_VIDEO_APRESENTACAO: falta o video
+
