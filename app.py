@@ -8,12 +8,9 @@ import joblib
 import pandas as pd
 import streamlit as st
 
-try:
-    from src.ml_utils import add_engineered_features
-except ModuleNotFoundError:
-    from ml_utils import add_engineered_features
+from ml_utils import add_engineered_features
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent
 ARTIFACTS_DIR = PROJECT_ROOT / "artifacts"
 
 # Configurações iniciais da página
@@ -38,7 +35,7 @@ def load_artifacts():
 try:
     payload, metrics = load_artifacts()
 except FileNotFoundError:
-    st.error("Modelo não encontrado. Execute `python src/train_model.py` antes de iniciar o app.")
+    st.error("Modelo não encontrado. Execute `python train_model.py` antes de iniciar o app.")
     st.stop()
 
 # Extrai o modelo e as colunas de features do payload carregado
