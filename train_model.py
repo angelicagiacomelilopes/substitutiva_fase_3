@@ -24,10 +24,7 @@ from sklearn.model_selection import StratifiedKFold, cross_validate, train_test_
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-try:
-    from src.ml_utils import add_engineered_features, build_binary_target, load_dataset
-except ModuleNotFoundError:
-    from ml_utils import add_engineered_features, build_binary_target, load_dataset
+from ml_utils import add_engineered_features, build_binary_target, load_dataset
 
 
 @dataclass
@@ -85,7 +82,7 @@ def build_pipeline(categorical_cols: list[str], numerical_cols: list[str]) -> Pi
 
 def main() -> None:
     # Realiza treinamento 
-    project_root = Path(__file__).resolve().parent.parent
+    project_root = Path(__file__).resolve().parent
     data_path = project_root / "StudentsPrepared.xlsx"
     artifacts_dir = project_root / "artifacts"
     os.makedirs(artifacts_dir, exist_ok=True) 
