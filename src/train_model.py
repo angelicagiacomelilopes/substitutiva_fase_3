@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 from dataclasses import dataclass, asdict
+from pathlib import Path
 
 import joblib
 import numpy as np
@@ -84,8 +85,9 @@ def build_pipeline(categorical_cols: list[str], numerical_cols: list[str]) -> Pi
 
 def main() -> None:
     # Realiza treinamento 
-    data_path = "StudentsPrepared.xlsx"
-    artifacts_dir = "artifacts" 
+    project_root = Path(__file__).resolve().parent.parent
+    data_path = project_root / "StudentsPrepared.xlsx"
+    artifacts_dir = project_root / "artifacts"
     os.makedirs(artifacts_dir, exist_ok=True) 
 
     df = load_dataset(data_path)
@@ -144,9 +146,9 @@ def main() -> None:
         "numerical_columns": numerical_cols,
     }
     
-    model_path = os.path.join(artifacts_dir, "model.joblib")
-    metrics_path = os.path.join(artifacts_dir, "metrics.json")
-    report_path = os.path.join(artifacts_dir, "classification_report.txt")
+    model_path = artifacts_dir / "model.joblib"
+    metrics_path = artifacts_dir / "metrics.json"
+    report_path = artifacts_dir / "classification_report.txt"
 
     joblib.dump(payload, model_path)
 
